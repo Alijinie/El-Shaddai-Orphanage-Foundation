@@ -27,6 +27,27 @@
     <meta name="twitter:image" content="https://www.elshaddaifoundation.org/images/social-preview.jpg" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
+			.bottom-Logo-img {
+				display: block !important;       /* Isolates the logo on its own line centered above the links */
+				margin: 0 auto 1.25em auto !important; /* Centers horizontally and adds clean space below it */
+				width: auto !important;          /* Prevents template rules from forcing full-width stretching */
+				height: 150px !important;         /* Perfect visual sweet-spot height for desktop */
+				object-fit: contain !important;  /* Hard protection for the image's true aspect ratio */
+				opacity: 0.8;                    /* Subtly matches the lower visual weight of footer text */
+				transition: opacity 0.3s ease;
+			}
+
+			.bottom-Logo-img:hover {
+				opacity: 1;                      /* Illuminates fully when hovered */
+			}
+
+			/* Responsive adjustment for mobile viewports */
+			@media screen and (max-width: 736px) {
+				.bottom-Logo-img {
+					height: 100px !important;     /* Scales down gracefully so it doesn't crowd mobile screens */
+					margin-bottom: 1em !important;
+				}
+			}
 			/* Custom Impact Counters Styling */
 			.impact-container {
 				text-align: center;
