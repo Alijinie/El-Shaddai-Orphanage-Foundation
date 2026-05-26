@@ -227,6 +227,49 @@
           margin-bottom: 0px !important;
         }
       }
+      /* --- Desktop Layout Enhancements for Home Page Blocks --- */
+@media screen and (min-width: 737px) {
+    /* 1. Standardize and shrink the left floated image bounds */
+    #overview .box.post .image.left,
+    #investment .box.post .image.left {
+        max-width: 130px; /* Brings images to a crisp, professional size */
+        margin-right: 1.5em;
+        margin-bottom: 0;
+    }
+
+    /* 2. Vertically center and align the text block alongside the image */
+    #overview .box.post,
+    #investment .box.post {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding: 1.5em; /* Cleans up outer spacing gaps */
+        background: #ffffff; /* Gives boxes an elegant, clean profile */
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04); /* Optional: Soft modern elevation */
+        height: 100px; /* Keeps card rows uniformly aligned */
+    }
+
+    /* 3. Drop default template float margins causing the wide spacing layout bug */
+    #overview .box.post .inner,
+    #investment .box.post .inner {
+        margin-left: 0 !important;
+        flex: 1;
+    }
+
+    /* 4. Typographic tightening */
+    #overview .box.post h3,
+    #investment .box.post h3 {
+        margin: 0 0 0.25em 0 !important;
+        padding: 0 !important;
+        line-height: 1.3;
+    }
+    
+    #overview .box.post p {
+        margin: 0 !important;
+        line-height: 1.4;
+    }
+}
     </style>
   </head>
   <body class="is-preload">
@@ -348,7 +391,7 @@
           </header>
           <div class="row">
             
-            <section class="col-6 col-12-narrower">
+            <section class="col-4 col-6-medium col-12-narrower">
               <div class="box post">
                 <a href="#" class="image left"><img src="33.jpeg" alt="Emotional Healing therapy" /></a>
                 <div class="inner">
@@ -358,7 +401,7 @@
               </div>
             </section>
             
-            <section class="col-6 col-12-narrower">
+            <section class="col-4 col-6-medium col-12-narrower">
               <div class="box post">
                 <a href="#" class="image left"><img src="55.jpeg" alt="Academic Excellence and ICT program" /></a>
                 <div class="inner">
@@ -368,7 +411,7 @@
               </div>
             </section>
             
-            <section class="col-6 col-12-narrower">
+            <section class="col-4 col-6-medium col-12-narrower">
               <div class="box post">
                 <a href="#" class="image left"><img src="666.jpeg" alt="Vocational training skills" /></a>
                 <div class="inner">
@@ -378,7 +421,7 @@
               </div>
             </section>
             
-            <section class="col-6 col-12-narrower">
+            <section class="col-4 col-6-medium col-12-narrower">
               <div class="box post">
                 <a href="#" class="image left"><img src="s.jpg" alt="Spiritual Growth mentorship" /></a>
                 <div class="inner">
@@ -388,7 +431,7 @@
               </div>
             </section>
             
-            <section class="col-6 col-12-narrower">
+            <section class="col-4 col-6-medium col-12-narrower">
               <div class="box post">
                 <a href="#" class="image left"><img src="999.jpeg" alt="Social integration outreach" /></a>
                 <div class="inner">
@@ -398,7 +441,7 @@
               </div>
             </section>
             
-            <section class="col-6 col-12-narrower">
+            <section class="col-4 col-6-medium col-12-narrower">
               <div class="box post">
                 <a href="#" class="image left"><img src="99.jpg" alt="Economic empowerment and arts" /></a>
                 <div class="inner">
