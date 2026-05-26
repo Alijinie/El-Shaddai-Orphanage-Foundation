@@ -3368,3 +3368,28 @@ input, select, textarea {
 			}
 
 	}
+	/* ==========================================================================
+   FIX: Responsive Left-Aligned Images (Pillars & Programs)
+   ========================================================================== */
+
+/* Desktop & Tablet: Caps the image wrapper to 500px and allows clean text-wrapping */
+.image.left {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Ensures the actual image inside scales nicely to match the wrapper */
+.image.left img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Mobile Viewports: Prevents text from being squished into a tiny side column */
+@media screen and (max-width: 736px) {
+    .image.left {
+        float: none !important;
+        display: block !important;
+        margin: 0 auto 1.5em auto !important; /* Centers the image above the text */
+        max-width: 100% !important;
+    }
+}
