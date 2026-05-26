@@ -29,6 +29,25 @@
     <link rel="icon" type="image/jpg" href="logo.jpg">
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
+      /* --- Mobile Viewport Adjustments for Home Page Blocks --- */
+@media screen and (max-width: 736px) {
+    /* 1. Target the text container inside the cards for both sections */
+    #overview .box.post .inner,
+    #investment .box.post .inner {
+        text-align: center; /* Centers h3 and p text alignments */
+        margin-left: 0 !important; /* Forces removal of layout float spacing bugs */
+        padding: 1em 0.5em 0 0.5em; /* Smooth breathing room directly below images */
+    }
+
+    /* 2. Optional: Center the image wrappers themselves so they look balanced */
+    #overview .box.post .image.left,
+    #investment .box.post .image.left {
+        float: none !important; /* Removes template-level left alignment */
+        display: block;
+        margin: 0 auto 1em auto !important; /* Centers image on line and pushes text down */
+        max-width: 180px; /* Keeps your phone uploads perfectly proportioned */
+    }
+}
       /* ==========================================================================
          LAYOUT FIX: Modern Box-Post Alignment System (Desktop & Mobile)
          ========================================================================== */
