@@ -29,6 +29,59 @@
     <link rel="icon" type="image/jpg" href="logo.jpg">
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
+      /* ==========================================================================
+         LAYOUT FIX: Modern Box-Post Alignment System (Desktop & Mobile)
+         ========================================================================== */
+      .box.post {
+        display: flex !important;
+        align-items: flex-start !important;
+        background: #ffffff;
+        padding: 1.5em !important;
+        border-radius: 6px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        margin-bottom: 2em;
+        height: calc(100% - 2em); /* Forces cards in the same row to align perfectly equal height */
+      }
+      .box.post .image.left {
+        flex-shrink: 0 !important;
+        width: 130px !important;
+        height: 130px !important;
+        margin: 0 1.5em 0 0 !important;
+        overflow: hidden;
+        border-radius: 4px;
+        float: none !important; /* Disables template float layout conflicts */
+      }
+      .box.post .image.left img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* Guarantees image aspect-ratio protection */
+      }
+      .box.post .inner {
+        flex: 1 !important;
+      }
+      .box.post .inner h3 {
+        margin-top: 0 !important;
+        margin-bottom: 0.5em !important;
+      }
+
+      /* Responsive adaptation for tablets and mobile viewports */
+      @media screen and (max-width: 840px) {
+        .box.post {
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+        }
+        .box.post .image.left {
+          margin: 0 0 1.25em 0 !important;
+          width: 100% !important;
+          max-width: 320px !important;
+          height: 180px !important;
+        }
+      }
+
+      /* ==========================================================================
+         PRESERVED PROGRESS: Custom Component Elements
+         ========================================================================== */
       .impact-container {
         text-align: center;
       }
@@ -74,27 +127,25 @@
       }
       .logo-img {
         display: inline-block !important;
-        width: auto !important;          /* Overrides global template responsive width stretching */
-        height: 2.2em !important;        /* Proportional scaling relative to container text */
-        max-height: 50px !important;     /* Hard ceiling to prevent arbitrary scaling */
-        object-fit: contain !important;  /* Protects aspect ratio from any squeezing or distortion */
-        vertical-align: middle !important; /* Vertically aligns logo inline with text */
-        margin-right: 0.5em !important;  /* Creates uniform breathing room before text */
-        margin-top: -0.15em !important;  /* Minor typographic alignment correction */
+        width: auto !important;          
+        height: 2.2em !important;        
+        max-height: 50px !important;     
+        object-fit: contain !important;  
+        vertical-align: middle !important; 
+        margin-right: 0.5em !important;  
+        margin-top: -0.15em !important;  
       }
-      /* Footer Bottom Logo Styling */
       .bottom-Logo-img {
-        display: block !important;       /* Isolates the logo on its own line centered above the links */
-        margin: 0 auto 1.25em auto !important; /* Centers horizontally and adds clean space below it */
-        width: auto !important;          /* Prevents template rules from forcing full-width stretching */
-        height: 150px !important;         /* Perfect visual sweet-spot height for desktop */
-        object-fit: contain !important;  /* Hard protection for the image's true aspect ratio */
-        opacity: 0.8;                    /* Subtly matches the lower visual weight of footer text */
+        display: block !important;       
+        margin: 0 auto 1.25em auto !important; 
+        width: auto !important;          
+        height: 150px !important;         
+        object-fit: contain !important;  
+        opacity: 0.8;                    
         transition: opacity 0.3s ease;
       }
-
       .bottom-Logo-img:hover {
-        opacity: 1;                      /* Illuminates fully when hovered */
+        opacity: 1;                      
       }
       .near-down {
         margin-top: 2em;
@@ -108,21 +159,17 @@
         height: 28em;
         text-align: center;
         position: relative;
-        overflow: hidden; /* Essential: Prevents off-screen background track from creating page scrollbars */
+        overflow: hidden; 
         display: flex;
         align-items: center;
         justify-content: center;
       }
-
-      /* Forces text elements to layer nicely on top of moving graphics safely */
       .banner-content {
         position: relative;
         z-index: 3;
         width: 100%;
         padding: 0 2em;
       }
-
-      /* Background viewport housing layer */
       .banner-slider {
         position: absolute;
         top: 0;
@@ -130,28 +177,22 @@
         width: 100%;
         height: 100%;
         z-index: 1;
-        background: #111; /* Robust backdrop configuration layer fallback */
+        background: #111; 
       }
-
-      /* Flexbox track combining the total sequences side by side */
       .slider-track {
         display: flex;
-        width: 600%; /* Adapts viewport size to cleanly manage base and mirror frames seamlessly */
+        width: 600%; 
         height: 100%;
-        will-change: transform; /* Explicitly instructs browser layout engines to handle layer transitions over hardware */
-        animation: slidePanRight 30s linear infinite; /* Higher time values create a smoother, slower drift */
+        will-change: transform; 
+        animation: slidePanRight 30s linear infinite; 
       }
-
-      /* Configuration details for background photo slides */
       .slide-img {
         width: 16.6666666%;
         height: 100%;
-        background-size: cover; /* Ensures images fill their containers without distortion while maintaining aspect ratio */
+        background-size: cover; 
         background-position: center center;
         flex-shrink: 0;
       }
-
-      /* High contrast overlay to ensure textual hierarchy stands out safely over images */
       .banner-slider::after {
         content: '';
         position: absolute;
@@ -159,21 +200,19 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(76, 29, 149, 0.5), rgba(0, 0, 0, 0.65)); /* Deep royal purple tone accent blend */
+        background: linear-gradient(135deg, rgba(76, 29, 149, 0.5), rgba(0, 0, 0, 0.65)); 
         z-index: 2;
       }
 
-      /* HIGH-PERFORMANCE INFINITE TRANSFORMS (Left-to-Right Flow Loop) */
       @keyframes slidePanRight {
         0% {
-          transform: translate3d(-50%, 0, 0); /* Offsets tracking position back to start sequence seamlessly */
+          transform: translate3d(-50%, 0, 0); 
         }
         100% {
-          transform: translate3d(0%, 0, 0); /* Advances track cleanly to original coordinates without skipping points */
+          transform: translate3d(0%, 0, 0); 
         }
       }
 
-      /* 2. MOBILE RESPONSIVE OVERRIDES: Targets desktop viewports and the cloned titlebar/navigation panels */
       @media screen and (max-width: 736px) {
         .logo-img,
         #titleBar .title .logo-img,
@@ -181,8 +220,8 @@
         #navPanel a .logo-img {
           display: inline-block !important;
           width: auto !important;
-          height: 1.4em !important;     /* Compact layout height matching mobile title sizes */
-          max-height: 32px !important;    /* Caps the sizing cleanly within small mobile panels */
+          height: 1.4em !important;     
+          max-height: 32px !important;    
           margin-right: 0.3em !important;
           margin-top: -0.1em !important;
           margin-bottom: 0px !important;
@@ -217,12 +256,9 @@
             <div class="slide-img" style="background-image: url('1.jpeg');"></div>
             <div class="slide-img" style="background-image: url('2.jpeg');"></div>
             <div class="slide-img" style="background-image: url('3.jpeg');"></div>
-            
-            
             <div class="slide-img" style="background-image: url('1.jpeg');"></div>
             <div class="slide-img" style="background-image: url('2.jpeg');"></div>
             <div class="slide-img" style="background-image: url('3.jpeg');"></div>
-            
           </div>
         </div>
 
@@ -267,36 +303,40 @@
       <section id="overview" class="wrapper style2">
         <div class="container">
           <header class="major" id="midSec">
-            <h1>Urgent Realities Countered</h1>
+            <h2>Urgent Realities Countered</h2>
           </header>
           <div class="row">
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="w.webp" alt="Oil Palm Plantation" /></a>
+                <a href="#" class="image left"><img src="w.webp" alt="Child welfare support" /></a>
                 <div class="inner">
                   <h3>Exploitative Child Labour</h3>
                   <p>Preventing children from entering backbreaking farm tasks due to resource constraints.</p>
                 </div>
               </div>
             </section>
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="w.webp" alt="Workers in a farm" /></a>
+                <a href="#" class="image left"><img src="w.webp" alt="Community integration" /></a>
                 <div class="inner">
                   <h3>Social Isolation</h3>
                   <p>Breaking stigmas surrounding children who have lost parents due to HIV/AIDS.</p>
                 </div>
               </div>
             </section>
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="w.webp" alt="Workers in a farm" /></a>
+                <a href="#" class="image left"><img src="w.webp" alt="Children educational focus" /></a>
                 <div class="inner">
                   <h3>Educational Dropout</h3>
                   <p>Stepping in to anchor siblings forced out of schools to survive day-to-day.</p>
                 </div>
               </div>
             </section>
+
           </div>
         </div>
       </section>
@@ -304,63 +344,70 @@
       <section id="investment" class="wrapper style1">
         <div class="container">
           <header class="major" id="midSec">
-            <h1>The 6 Core Competencies</h1>
+            <h2>The 6 Core Competencies</h2>
           </header>
           <div class="row">
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="1.jpeg" alt="Oil Palm Plantation" /></a>
+                <a href="#" class="image left"><img src="1.jpeg" alt="Emotional Healing therapy" /></a>
                 <div class="inner">
                   <h3>Emotional Healing</h3>
                   <p>Grounded in our organizational motto, "Love God, Love people, Serve others," we encourage active involvement in fellowship, personal reflection, and character-building activities that reveal hope and promote deep healing from early childhood trauma.</p>
                 </div>
               </div>
             </section>
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="3.jpeg" alt="Workers in a farm" /></a>
+                <a href="#" class="image left"><img src="3.jpeg" alt="Academic Excellence and ICT program" /></a>
                 <div class="inner">
                   <h3>Academic Excellence</h3>
                   <p>The modern world operates on a digital landscape, yet rural communities in Eastern Uganda face severe technical gaps that amplify school dropout rates. Our ICT competency program actively bridges this divide.</p>
                 </div>
               </div>
             </section>
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="2.jpeg" alt="Workers in a farm" /></a>
+                <a href="#" class="image left"><img src="2.jpeg" alt="Vocational training skills" /></a>
                 <div class="inner">
                   <h3>Vocational Skills</h3>
                   <p>Children are introduced to practical vocational concepts, trade fundamentals, and real-world sustainable farming practices. By teaching them how to design, manage, and scale small enterprises, we grant them the practical tools necessary to secure long-term financial independence.</p>
                 </div>
               </div>
             </section>
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="s.jpg" alt="Workers in a farm" /></a>
+                <a href="#" class="image left"><img src="s.jpg" alt="Spiritual Growth mentorship" /></a>
                 <div class="inner">
                   <h3>Spiritual Growth</h3>
                   <p>As a Christian faith-based non-profit organization, our mission is fundamentally guided by scriptural principles and spiritual mentorship. We follow the timeless wisdom of Proverbs 22:6 to train up children in the way they should go, ensuring a strong moral foundation that endures into adulthood.</p>
                 </div>
               </div>
             </section>
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="hero.jpeg" alt="Workers in a farm" /></a>
+                <a href="#" class="image left"><img src="hero.jpeg" alt="Social integration outreach" /></a>
                 <div class="inner">
                   <h3>Social Integration</h3>
                   <p>Our children learn the value of personal character, respect for property rights, and the importance of honoring external agreements and contracts. By encouraging continuous self-improvement and introducing measurable metrics for personal growth, we prepare our youth to become trustworthy citizens who naturally stand out from the crowd.</p>
                 </div>
               </div>
             </section>
+            
             <section class="col-6 col-12-narrower">
               <div class="box post">
-                <a href="#" class="image left"><img src="99.jpg" alt="Workers in a farm" /></a>
+                <a href="#" class="image left"><img src="99.jpg" alt="Economic empowerment and arts" /></a>
                 <div class="inner">
                   <h3>Economic Empowerment</h3>
-                  <p>Our programs are designed to intentionally uncover, nurture, and celebrate the unique artistic, musical, creative, and athletic capabilities inherent in every child. Cultivating these gifts helps restore shattered self-esteem, rebuilds individual hope, and opens sustainable pathways toward future professional opportunities in creative fields</p>
+                  <p>Our programs are designed to intentionally uncover, nurture, and celebrate the unique artistic, musical, creative, and athletic capabilities inherent in every child. Cultivating these gifts helps restore shattered self-esteem, rebuilds individual hope, and opens sustainable pathways toward future professional opportunities in creative fields.</p>
                 </div>
               </div>
             </section>
+
           </div>
         </div>
       </section>
@@ -368,7 +415,7 @@
       <section id="cta" class="wrapper style3">
         <div class="container">
           <header>
-            <h2>The 6 Core Competencies</h2>
+            <h2>Empower. Elevate. Restore.</h2>
             <p id="compt">We are committed to cultivating the 6 core competencies of our beneficiaries: emotional healing, academic excellence, vocational skills, spiritual growth, social integration, and economic empowerment.</p>
             <a href="Core Competencies.html" class="button">Learn More</a>
           </header>
@@ -420,7 +467,7 @@
           <div class="row">
             <section class="col-3 col-6-narrower col-12-mobilep">
               <h3>Quick Links</h3>
-              <ul class="links" style="color: navy;">
+              <ul class="links">
                 <li><a href="Core Competencies.html">Our Strategic Goals</a></li>
                 <li><a href="Our Programmes.html">Sponsorship Programs</a></li>
                 <li><a href="contact.html">Community Impact</a></li>
@@ -430,7 +477,6 @@
               <h3>Core Foundation Contact</h3>
               <p><strong>Field Base:</strong> Usuk Sub-County, Katakwi District, Eastern Uganda.</p>
               <p><strong>Head Office:</strong> Wakiso District, Nansana Municipality.</p>
-              <p><strong>Primary Desk:</strong> elshaddaifoundation.org@gmail.com</p>
               <p><strong>Hotline:</strong> +256 774 538 481</p>
             </section>
           </div>
